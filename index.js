@@ -21,10 +21,15 @@ http.createServer((req, res) => {
         req.addListener('data', (chunk) => {
             data += chunk;
         })
-        req.addListener('end', () => {
-            // Goi toi route de xu ly
-            route[pathname](req, res, data);
-            res.end();
+        req.addListener('end', async () => {
+            try {
+                // Goi toi route de xu ly
+                await route[pathname](req, res, data);
+            } catch (error) {
+                //
+            } finally {
+                res.end();
+            }
         })
     } else {
         // Neu duong dan API khong hop le

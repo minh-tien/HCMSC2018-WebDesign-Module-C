@@ -16,7 +16,7 @@ var validQuery = (data, property) => {
             return false;
         }
     }
-    return true;
+    return result;
 }
 
 // Kiem tra tinh hop le chuoi JSON POST
@@ -41,7 +41,4 @@ var validJSON = (data, property) => {
     return result;
 }
 
-module.exports = {
-    validQuery: validQuery,
-    validJSON: validJSON
-}
+module.exports = { validQuery, validJSON };
