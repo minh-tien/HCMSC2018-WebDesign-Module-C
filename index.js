@@ -2,11 +2,13 @@
 const http = require('http');
 const url = require('url');
 const auth = require('./route/Authentication');
+const airline = require('./route/Airline');
 
 // Route dieu huong API
 var route = {
     '/v1/auth/login': auth.login,
-    '/v1/auth/logout': auth.logout
+    '/v1/auth/logout': auth.logout,
+    '/v1/airline': airline.createCompany
 }
 
 // Khoi tao server
