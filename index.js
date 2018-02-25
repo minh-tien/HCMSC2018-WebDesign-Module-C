@@ -8,7 +8,8 @@ const airline = require('./route/Airline');
 var route = {
     '/v1/auth/login': auth.login,
     '/v1/auth/logout': auth.logout,
-    '/v1/airline': airline.createCompany
+    '/v1/airline': airline.createCompany,
+    '/v1/flight': airline.createFlight
 }
 
 // Khoi tao server

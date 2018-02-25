@@ -41,4 +41,24 @@ var validJSON = (data, property) => {
     return result;
 }
 
-module.exports = { validQuery, validJSON };
+// Kiem tra so nguyen
+var validInt = (data) => {
+    data = data.toString();
+    if (!isNaN(data) && data == parseInt(data)) {
+        return parseInt(data);
+    }
+    return false;
+}
+
+// Kiem tra chuoi ngay thang
+var validDate = (data) => {
+    if (/^\d{4}-\d{2}-\d{2}$/.test(data)) {
+        var result = new Date(data);
+        if (result.toString() !== 'Invalid Date') {
+            return result;
+        }
+    }
+    return false;
+}
+
+module.exports = { validQuery, validJSON, validInt, validDate };
