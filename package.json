@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/minh-tien/HCMSC2018-WebDesign-Module-C/issues"
   },
-  "homepage": "https://github.com/minh-tien/HCMSC2018-WebDesign-Module-C#readme"
+  "homepage": "https://github.com/minh-tien/HCMSC2018-WebDesign-Module-C#readme",
+  "dependencies": {
+    "mysql": "github:mysqljs/mysql"
+  }
 }

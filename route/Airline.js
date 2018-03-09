@@ -81,4 +81,28 @@ var createFlight = async (req, res, data) => {
     }
 }
 
-module.exports = { createCompany, createFlight };
+var getFlights = async (req, res, data) => {
+    try {
+                
+        if (true) {
+			
+            var resultDB = await airlineDB.getFlights(data);
+            res.writeHead(200);
+            var result = {
+                message: 'Query success',
+                id: resultDB
+            }
+			console.log(resultDB);return true;
+            result = JSON.stringify(result);
+            res.write(result);
+        } else {
+            // Truong hop JSON gui len khong hop le
+            throw new Error('error');
+        }
+    } catch (error) {
+        
+    }
+}
+
+
+module.exports = { createCompany, createFlight, getFlights };

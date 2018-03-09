@@ -3,10 +3,12 @@ const authDB = require('../database/Authentication');
 
 // Xu ly dang nhap
 var login = async (req, res, data) => {
+	
     try {
         // Kiem tra tinh hop le cua JSON do Client gui len
         // Trong truong hop nay chuoi JSON can 2 thuoc tinh 'username' va 'password'
         var data = checkValid.validJSON(data, ['username', 'password']);
+		
         if (req.method === 'POST' && data) {
             var resultDB = await authDB.login(data);
             res.writeHead(200);

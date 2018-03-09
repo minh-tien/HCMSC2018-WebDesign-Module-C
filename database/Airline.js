@@ -4,7 +4,7 @@ const config = require('../config.json');
 var createCompany = (token, data) => {
     return new Promise((resolve, reject) => {
         var connection = mysql.createConnection(config);
-        var query = 'SELECT * FROM auth WHERE token = ?';
+        var query = 'SELECT * FROM users WHERE token = ?';
         connection.connect();
         // Kiem tra token co ton tai hay khong
         connection.query(query, [token.token], (error, results, fileds) => {
@@ -29,7 +29,7 @@ var createCompany = (token, data) => {
 var createFlight = (token, data) => {
     return new Promise((resolve, reject) => {
         var connection = mysql.createConnection(config);
-        var query = 'SELECT * FROM auth WHERE token = ?';
+        var query = 'SELECT * FROM users WHERE token = ?';
         connection.connect();
         // Kiem tra token co ton tai hay khong
         connection.query(query, [token.token], (error, results, fileds) => {
@@ -51,4 +51,27 @@ var createFlight = (token, data) => {
     })
 }
 
-module.exports = { createCompany, createFlight };
+var getFlights = (params) => {
+    return new Promise((resolve, reject) => {
+        var connection = mysql.createConnection(config);
+		connection.connect();
+
+		//lay danh sach chuyen bay theo 3 dieu kien
+		var sql_flights = 'SELECT * FROM airline_flight WHERE (from_city_name = ?) AND (to_city_name = ?)';
+			
+		
+		connection.query(sql_flights, [params.departure_city_name, params.desitination_city_name], (error, results, fileds) => {
+			
+			console.log(results);return true;
+				connection.end();
+				if (error) {
+					return reject(error.code);
+				}
+				return resolve(results);
+		
+        
+		})
+	})
+}
+
+module.exports = { createCompany, createFlight, getFlights };

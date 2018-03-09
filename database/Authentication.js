@@ -5,9 +5,11 @@ const config = require('../config.json');
 var login = (data) => {
     return new Promise((resolve, reject) => {
         var connection = mysql.createConnection(config);
-        var query = 'SELECT * FROM auth WHERE username = ? AND password = ?';
+        var query = 'SELECT * FROM users WHERE username = ? AND password = ?';
         connection.connect();
         // Kiem tra tai khoan co ton tai hay khong
+		//console.log(crypto.createHash('md5').update(data.password).digest('hex'));
+		//return true;
         connection.query(query, [data.username, data.password], (error, results, fileds) => {
             // Neu xay ra loi hoac tai khoan khong ton tai
             if (error || results.length === 0) {
@@ -16,7 +18,7 @@ var login = (data) => {
             }
             // 'token' chua gia tri bam md5 cua 'username' ket hop voi timestamp
             var token = crypto.createHash('md5').update(data.username + Date.now()).digest('hex');
-            var query2 = 'UPDATE auth SET token = ? WHERE username = ?';
+            var query2 = 'UPDATE users SET token = ? WHERE username = ?';
             // Cap nhat token cho tai khoan
             connection.query(query2, [token, data.username], (error, results2, fileds) => {
                 connection.end();
@@ -35,7 +37,7 @@ var login = (data) => {
 var logout = (data) => {
     return new Promise((resolve, reject) => {
         var connection = mysql.createConnection(config);
-        var query = 'SELECT * FROM auth WHERE token = ?';
+        var query = 'SELECT * FROM users WHERE token = ?';
         connection.connect();
         // Kiem tra token co ton tai hay khong
         connection.query(query, [data], (error, results, fileds) => {
@@ -44,7 +46,7 @@ var logout = (data) => {
                 connection.end();
                 return reject(error);
             }
-            var query2 = 'UPDATE auth SET token = "" WHERE username = ?';
+            var query2 = 'UPDATE users SET token = "" WHERE username = ?';
             // Xoa bo token cua tai khoan
             connection.query(query2, [results[0].username], (error, results, fileds) => {
                 connection.end();
