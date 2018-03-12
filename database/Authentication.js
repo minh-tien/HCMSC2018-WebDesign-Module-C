@@ -8,8 +8,8 @@ var login = (data) => {
         var query = 'SELECT * FROM users WHERE username = ? AND password = ?';
         connection.connect();
         // Kiem tra tai khoan co ton tai hay khong
-		//console.log(crypto.createHash('md5').update(data.password).digest('hex'));
-		//return true;
+        //console.log(crypto.createHash('md5').update(data.password).digest('hex'));
+        //return true;
         connection.query(query, [data.username, data.password], (error, results, fileds) => {
             // Neu xay ra loi hoac tai khoan khong ton tai
             if (error || results.length === 0) {
@@ -34,27 +34,18 @@ var login = (data) => {
     })
 }
 
-var logout = (data) => {
+var logout = (auth) => {
     return new Promise((resolve, reject) => {
         var connection = mysql.createConnection(config);
-        var query = 'SELECT * FROM users WHERE token = ?';
+        var query = 'UPDATE users SET token = "" WHERE token = ?';
         connection.connect();
-        // Kiem tra token co ton tai hay khong
-        connection.query(query, [data], (error, results, fileds) => {
-            // Neu xay ra loi hoac token khong ton tai
-            if (error || results.length === 0) {
-                connection.end();
+        // Xoa bo token cua tai khoan
+        connection.query(query, [auth.token], (error, results, fileds) => {
+            connection.end();
+            if (error) {
                 return reject(error);
             }
-            var query2 = 'UPDATE users SET token = "" WHERE username = ?';
-            // Xoa bo token cua tai khoan
-            connection.query(query2, [results[0].username], (error, results, fileds) => {
-                connection.end();
-                if (error) {
-                    return reject(error);
-                }
-                return resolve();
-            })
+            return resolve();
         })
     })
 }
