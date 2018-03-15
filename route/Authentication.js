@@ -1,17 +1,15 @@
 const checkValid = require('../checkValid');
-const authDB = require('../database/Authentication');
+const DBAuth = require('../database/Authentication');
 
 // Xu ly dang nhap
 var login = async (req, res, data, auth) => {
-
     try {
         // Kiem tra tinh hop le cua JSON do Client gui len
         // Trong truong hop nay chuoi JSON can 2 thuoc tinh 'username' va 'password'
         var data = checkValid.validJSON(data, ['username', 'password']);
-
         if (req.method === 'POST' && data) {
-            var resultDB = await authDB.login(data);
-            console.log('s');
+            var oDBAuth = new DBAuth();
+            var resultDB = await oDBAuth.login(data);
             res.writeHead(200);
             var result = {
                 token: resultDB.token,
@@ -39,7 +37,8 @@ var logout = async (req, res, data, auth) => {
         // Trong truong hop nay chuoi truy van can 1 key 'token'
         var data = checkValid.validQuery(req.url, ['token']);
         if (req.method === 'GET' && data) {
-            await authDB.logout(auth);
+            var oDBAuth = new DBAuth();
+            await oDBAuth.logout(auth);
             res.writeHead(200);
             var result = { message: 'Logout success' };
             result = JSON.stringify(result);

@@ -28,7 +28,7 @@ CREATE TABLE `airline_company` (
   `city_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `airline_name` (`airline_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `airline_company` (
 
 LOCK TABLES `airline_company` WRITE;
 /*!40000 ALTER TABLE `airline_company` DISABLE KEYS */;
-INSERT INTO `airline_company` VALUES (5,'a','b'),(6,'aa','b'),(8,'asa','b'),(9,'gggasa','b'),(11,'gggayysa','b'),(14,'gggayfsfsysa','b'),(15,'gggayfsfgjfsysa','b'),(16,'gggghayfsfgjfsysa','b'),(21,'rrr','b'),(22,'rrfdsr','b'),(24,'abc','b');
+INSERT INTO `airline_company` VALUES (5,'a','b'),(6,'aa','b'),(8,'asa','b'),(9,'gggasa','b'),(11,'gggayysa','b'),(14,'gggayfsfsysa','b'),(15,'gggayfsfgjfsysa','b'),(16,'gggghayfsfgjfsysa','b'),(21,'rrr','b'),(22,'rrfdsr','b'),(24,'abc','b'),(25,'abjck','b');
 /*!40000 ALTER TABLE `airline_company` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,7 +95,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('admin','adminpass','0ff488866d32b26c4d8b4720093822a1','admin',1),('user1','user1pass','f9e3b18275ec1dc338bc1b3a16ec6ead','user',2),('user2','user2pass','','user',3);
+INSERT INTO `users` VALUES ('admin','adminpass','0ff488866d32b26c4d8b4720093822a1','admin',1),('user1','user1pass','6e469cf45f46659aa5c96fe079e9af91','user',2),('user2','user2pass','','user',3);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -108,4 +108,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-12 23:16:44
+-- Dump completed on 2018-03-15 11:07:18
