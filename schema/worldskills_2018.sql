@@ -28,7 +28,7 @@ CREATE TABLE `airline_company` (
   `city_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `airline_name` (`airline_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `airline_company` (
 
 LOCK TABLES `airline_company` WRITE;
 /*!40000 ALTER TABLE `airline_company` DISABLE KEYS */;
-INSERT INTO `airline_company` VALUES (5,'a','b'),(6,'aa','b'),(8,'asa','b'),(9,'gggasa','b'),(11,'gggayysa','b'),(14,'gggayfsfsysa','b'),(15,'gggayfsfgjfsysa','b'),(16,'gggghayfsfgjfsysa','b'),(21,'rrr','b'),(22,'rrfdsr','b'),(24,'abc','b'),(25,'abjck','b');
+INSERT INTO `airline_company` VALUES (5,'a','b'),(6,'aa','b'),(8,'asa','b'),(9,'gggasa','b'),(11,'gggayysa','b'),(14,'gggayfsfsysa','b'),(15,'gggayfsfgjfsysa','b'),(16,'gggghayfsfgjfsysa','b'),(21,'rrr','b'),(22,'rrfdsr','b'),(24,'abc','b'),(25,'abjck','b'),(30,'aaaaaaaa','b'),(34,'sadsad','sssb');
 /*!40000 ALTER TABLE `airline_company` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,8 +58,9 @@ CREATE TABLE `airline_flight` (
   `airline_id` int(10) DEFAULT NULL,
   `price` int(10) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `airline_id_UNIQUE` (`airline_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +69,7 @@ CREATE TABLE `airline_flight` (
 
 LOCK TABLES `airline_flight` WRITE;
 /*!40000 ALTER TABLE `airline_flight` DISABLE KEYS */;
-INSERT INTO `airline_flight` VALUES ('2018-02-24','2018-02-24','5','6','abc','ddf',1,33,1),('2018-02-24','2018-02-24','5','6','abc','ddf',2,33,2),('2018-02-24','2018-02-24','5','6','abc','ddf',5,33,3),('2018-02-24','2018-02-24','5','6','abc','ddf',7,33,4),('2018-02-24','2018-02-24','5','6','abc','ddf',7,33,5);
+INSERT INTO `airline_flight` VALUES ('2018-02-24','2018-02-24','5','6','abc','ddf',1,33,1),('2018-02-24','2018-02-24','5','6','abc','ddf',2,33,2),('2018-02-24','2018-02-24','5','6','abc','ddf',5,33,3),('2018-02-24','2018-02-24','5','6','abc','ddf',7,33,4),('2018-02-24','2018-02-24','5','6','abc','ddf',9,33,6),('2018-12-24','2018-02-24','5','6','abc','ddf',179,33,8);
 /*!40000 ALTER TABLE `airline_flight` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,7 +96,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('admin','adminpass','0ff488866d32b26c4d8b4720093822a1','admin',1),('user1','user1pass','6e469cf45f46659aa5c96fe079e9af91','user',2),('user2','user2pass','','user',3);
+INSERT INTO `users` VALUES ('admin','adminpass','c68b872146a0b4f2047ac942d61abb00','admin',1),('user1','user1pass','4a0bb12f599e4623d00cad0b5df0bd89','user',2),('user2','user2pass','9fe69f331d5f86b75de36d28ec07c366','user',3);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -108,4 +109,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-15 11:07:18
+-- Dump completed on 2018-03-25 18:52:00
